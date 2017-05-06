@@ -1,13 +1,13 @@
-#ifndef NwtLedLib_h
-#define NwtLedLib_h
+#ifndef SmartLedLib_h
+#define SmartLedLib_h
 #include "Arduino.h"
-class NwtLedLib
+class SmartLedLib
 {
   private:
   int _pin;
   bool _state;
   public:
-  NwtLedLib(int pin);
+  SmartLedLib(int pin);
   void on();
   void off();
   void changeState();

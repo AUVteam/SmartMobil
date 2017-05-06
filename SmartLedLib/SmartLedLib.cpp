@@ -1,26 +1,26 @@
 #include "Arduino.h"
-#include "NwtLedLib.h"
+#include "SmartLedLib.h"
 
-NwtLedLib::NwtLedLib(int pin)
+SmartLedLib::SmartLedLib(int pin)
 {
   pinMode(pin, OUTPUT);
   _pin = pin;
   _state = false;
 }
 
-void NwtLedLib::on()
+void SmartLedLib::on()
 {
   digitalWrite(_pin, HIGH);
   _state = true;
 }
 
-void NwtLedLib::off()
+void SmartLedLib::off()
 {
   digitalWrite(_pin, LOW);
   _state = false;
 }
 
-void NwtLedLib::changeState()
+void SmartLedLib::changeState()
 {
   _state = !_state;
   if(_state){
@@ -30,7 +30,7 @@ void NwtLedLib::changeState()
   }
 }
 
-void NwtLedLib::blinkNormal(float timesPerSecond, int times)
+void SmartLedLib::blinkNormal(float timesPerSecond, int times)
 {
   int period = 500 / timesPerSecond;
   for(int i = 0; i < (2 * times); i++){
@@ -40,12 +40,12 @@ void NwtLedLib::blinkNormal(float timesPerSecond, int times)
   off();
 }
 
-void NwtLedLib::analogOn(int value)
+void SmartLedLib::analogOn(int value)
 {
   analogWrite(_pin, value);
 }
 
-void NwtLedLib::fadeOn(int seconds)
+void SmartLedLib::fadeOn(int seconds)
 {
   int waitTime = seconds / 1024;
   for(int i = 0; i <= 1023; i++){
@@ -54,7 +54,7 @@ void NwtLedLib::fadeOn(int seconds)
   }
 }
 
-void NwtLedLib::fadeOff(int seconds)
+void SmartLedLib::fadeOff(int seconds)
 {
   int waitTime = seconds / 1024;
   for(int i = 1023; i >= 0; i--){
@@ -63,7 +63,7 @@ void NwtLedLib::fadeOff(int seconds)
   }
 }
 
-void NwtLedLib::blinkFade(float timesPerSecond, int times)
+void SmartLedLib::blinkFade(float timesPerSecond, int times)
 {
   int period = 500 / timesPerSecond;
   for(int i = 0; i < (1 * times); i++){
@@ -73,7 +73,7 @@ void NwtLedLib::blinkFade(float timesPerSecond, int times)
   off();
 }
 
-int NwtLedLib::getState()
+int SmartLedLib::getState()
 {
   return _state;
 }
